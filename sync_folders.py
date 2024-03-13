@@ -20,6 +20,7 @@ def calculate_md5(fname, callback=None):
         log (f"Error reading file {fname}: {e}", log_file)
         return None         
     return hash_md5.hexdigest()
+    
 def silent_callback():
     pass
     
