@@ -4,10 +4,10 @@ import hashlib # used for calculating md5 hash (checksum calculation)
 from datetime import datetime
 
 def calculate_md5(fname, callback=None):
-# calculate the MD5 checksum of a file.
+# calculate the MD5 checksum of a file
 # parameters:
-# fname (str): The path to the file.
-# callback (function): An optional callback function to report progress.
+# fname (str): The path to the file
+# callback (function): An optional callback function to report progress
 # returns:
 # str: The MD5 checksum, or None if the file could not be read.
     hash_md5 = hashlib.md5()
@@ -20,6 +20,8 @@ def calculate_md5(fname, callback=None):
         log (f"Error reading file {fname}: {e}", log_file)
         return None         
     return hash_md5.hexdigest()
+def silent_callback():
+    pass
     
 
 def sync_folders(source, replica, log_file):
@@ -27,7 +29,7 @@ def sync_folders(source, replica, log_file):
 # parameters:
 # source (str): The source directory path
 # replica (str): The replica directory path
-# log_file (str): The log file path to write synchronization log
+# log_file (str): The log file path to write the synchronization log
     stats = {"directories_created": 0, "files_copied": 0, "files_updated": 0, "files_removed": 0, "directories_removed": 0}
     
     def process_file_action(source_file, replica_file, action):
@@ -102,10 +104,10 @@ def sync_folders(source, replica, log_file):
     log(f"Sync stats: {stats}", log_file) # log the synchronization statistics
 
 def log(message, file_path):
-# logs a message with a timestamp to a file and prints it.
+# logs a message with a timestamp to a file and prints it
 # parameters:
-# message (str): The message to log.
-# file_path (str): The path to the log file.
+# message (str): The message to log
+# file_path (str): The path to the log file
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_message = (f"{timestamp} - {message}")
     with open(file_path, "a") as f:
